@@ -1,3 +1,10 @@
-# Fullstack Authentication Example with Next.js and NextAuth.js
+# SightsFootball v2
 
-This is the starter project for the fullstack tutorial with Next.js and Prisma. You can find the final version of this project in the [`final`](https://github.com/prisma/blogr-nextjs-prisma/tree/final) branch of this repo.
+Upgrade of an exisitng website - [https://www.sightsfootball.com](https://www.sightsfootball.com). Which was built using Python Django. 
+<br/><br/>
+Decision to build a v2 was due to performance issues faced while performing SEO Optimizations. The Lighthouse performance report was not up to the mark with the Django version.
+
+
+
+
+

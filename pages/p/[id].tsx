@@ -1,7 +1,7 @@
 import React from "react"
 import { GetServerSideProps } from "next"
 import ReactMarkdown from "react-markdown"
-import Layout from "../../components/Layout"
+import Layout from "../../components/AdminLayout"
 import { PostProps } from "../../components/Post"
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {

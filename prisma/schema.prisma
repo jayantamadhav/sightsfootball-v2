@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum PostCategory {
+  NEWS
+  TRANSFERS
+  OFF_THE_PITCH
+  PREMIER_LEAGUE
+  LA_LIGA
+  BUNDESLIGA
+  SERIE_A
+}
+
+model Post {
+  id             String       @id @default(uuid())
+  category       PostCategory @default(NEWS)
+  url            String?
+  heading        String
+  subHeading     String
+  content        String?
+  image          String?
+  imageAlt       String?
+  keywords       String?
+  seoDescription String?
+  published      Boolean      @default(false)
+  author         User?        @relation(fields: [authorId], references: [id])
+  authorId       String?
+  views          Int?         @default(0)
+  createdAt      DateTime     @default(now()) @map(name: "created_at")
+  updatedAt      DateTime     @updatedAt @map(name: "updated_at")
+}
+
+enum UserType {
+  USER
+  EDITOR
+  ADMIN
+}
+
+model User {
+  id           String   @id @default(uuid())
+  firstName    String
+  lastName     String
+  email        String?  @unique
+  userType     UserType @default(USER)
+  password     String
+  accessToken  String?
+  refreshToken String?
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  updatedAt    DateTime @updatedAt @map(name: "updated_at")
+  posts        Post[]
+
+  @@map(name: "users")
+}
